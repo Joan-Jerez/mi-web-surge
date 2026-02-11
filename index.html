@@ -2,12 +2,154 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JoanJerezWeb</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
+      color:#eef2ff;
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 30%, rgba(34,197,94,.25), transparent 55%),
+        radial-gradient(900px 500px at 40% 95%, rgba(236,72,153,.22), transparent 55%),
+        linear-gradient(135deg, #0b1020, #050814);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+    }
+    @media (max-width: 860px){ .wrap{grid-template-columns:1fr} }
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      border-radius:18px;
+      padding:22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    .badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 18px rgba(34,197,94,.6);
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    p{margin:0 0 14px; color: rgba(238,242,255,.85); font-size: 15.5px; line-height:1.6}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 520px){ .grid{grid-template-columns:1fr} }
+    .mini{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      padding:14px;
+      background:rgba(0,0,0,.18);
+    }
+    .mini h3{margin:0 0 6px; font-size:13px; color: rgba(238,242,255,.9); font-weight:700; text-transform:uppercase; letter-spacing:.6px}
+    .mini div{font-size:14.5px; color: rgba(238,242,255,.8)}
+    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    a{
+      color:inherit; text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      font-weight:700;
+      transition: transform .12s ease, background .12s ease;
+    }
+    a:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .right h2{margin:0 0 10px; font-size:18px; letter-spacing:-.2px}
+    .steps{margin:0; padding-left:18px; color: rgba(238,242,255,.85)}
+    .steps li{margin:8px 0; line-height:1.55}
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:2px 6px;
+      border-radius:8px;
+      font-size: 13px;
+    }
+    footer{
+      margin-top:16px;
+      color: rgba(238,242,255,.6);
+      font-size: 12.5px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hola mundo 👋</h1>
-  <p>Deploy automático con GitHub Actions + Surge.sh</p>
-  <p>Repo: Joan-Jerez</p>
+  <main class="wrap">
+    <section class="card">
+      <span class="badge"><span class="dot"></span> Deploy automático activo</span>
+      <h1>JoanJerezWeb</h1>
+      <p>Ejemplo de CI/CD: cada <b>push</b> a <code>main</code> ejecuta GitHub Actions y despliega en <b>Surge.sh</b>.</p>
+
+      <div class="grid">
+        <div class="mini">
+          <h3>Repositorio</h3>
+          <div>Joan-Jerez / mi-web-surge</div>
+        </div>
+        <div class="mini">
+          <h3>Dominio</h3>
+          <div>JoanJerezWeb.surge.sh</div>
+        </div>
+        <div class="mini">
+          <h3>Workflow</h3>
+          <div>.github/workflows/main.yml</div>
+        </div>
+        <div class="mini">
+          <h3>Status</h3>
+          <div>✅ Build & Deploy OK</div>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a href="https://github.com/Joan-Jerez/mi-web-surge" target="_blank" rel="noopener">GitHub Repo ↗</a>
+        <a href="http://JoanJerezWeb.surge.sh" target="_blank" rel="noopener">Ver en Surge ↗</a>
+      </div>
+
+      <footer>Hecho para la práctica de Integración Continua con GitHub Actions + Surge.</footer>
+    </section>
+
+    <section class="card right">
+      <h2>Cómo funciona</h2>
+      <ol class="steps">
+        <li>Haces commit a <code>index.html</code> en GitHub.</li>
+        <li>Se dispara el workflow en la rama <code>main</code>.</li>
+        <li>Actions instala <code>surge</code> y publica el contenido.</li>
+        <li>Los secrets <code>SURGE_LOGIN</code> y <code>SURGE_TOKEN</code> evitan exponer credenciales.</li>
+      </ol>
+
+      <h2 style="margin-top:16px;">Tip rápido</h2>
+      <p>Para probar el redeploy, cambia cualquier texto, haz <b>Commit</b> y revisa la pestaña <b>Actions</b>.</p>
+    </section>
+  </main>
 </body>
 </html>
